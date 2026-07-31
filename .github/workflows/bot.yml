@@ -1,0 +1,37 @@
+name: paper-bot
+
+on:
+  schedule:
+    - cron: "5 * * * *"        # every hour at :05 UTC (GitHub cron can be delayed a few min — fine for 4h)
+  workflow_dispatch: {}         # adds a manual "Run workflow" button for testing
+
+permissions:
+  contents: write               # lets the run commit the updated state back to the repo
+
+concurrency:
+  group: paper-bot              # never let two runs race on the state file / git push
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install ccxt pandas numpy
+
+      - name: Run one bot tick
+        run: python paper_trader.py --symbol DOGE --once      # change coin/params here
+
+      - name: Save state back to the repo
+        run: |
+          git config user.name  "paper-bot"
+          git config user.email "paper-bot@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "state: $(date -u +%FT%TZ)"
+          git push
