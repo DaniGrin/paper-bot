@@ -25,8 +25,11 @@ jobs:
       - name: Install dependencies
         run: pip install ccxt pandas numpy
 
-      - name: Run one bot tick
-        run: python paper_trader.py --symbol DOGE --once      # change coin/params here
+      - name: Run bot ticks (all coins)
+        run: |
+          python paper_trader.py --symbol DOGE --once
+          python paper_trader.py --symbol SHIB --once
+          python paper_trader.py --symbol ETH  --once
 
       - name: Save state back to the repo
         run: |
