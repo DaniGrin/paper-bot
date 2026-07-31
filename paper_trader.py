@@ -89,9 +89,16 @@ def main():
     p.add_argument("--poll", type=int, default=60)
     p.add_argument("--once", action="store_true")
     p.add_argument("--replay", type=int, default=0, help="replay last N days instantly then exit")
+    p.add_argument("--exchange", default="kraken",
+                   help="ccxt exchange for price data. kraken works on GitHub/US; bybit for local")
+    p.add_argument("--quote", default="USD",
+                   help="quote symbol: 'USD' (kraken) or 'USDT:USDT' (bybit perp)")
     args = p.parse_args()
-    sym = args.symbol.upper(); symbol = f"{sym}/USDT:USDT"
-    ex = ccxt.bybit({"enableRateLimit": True, "options": {"defaultType": "swap"}})
+    sym = args.symbol.upper(); symbol = f"{sym}/{args.quote}"
+    _opts = {"enableRateLimit": True}
+    if args.exchange == "bybit":
+        _opts["options"] = {"defaultType": "swap"}
+    ex = getattr(ccxt, args.exchange)(_opts)
 
     # ---- REPLAY: run the bot bar-by-bar over recent history, instantly ----
     if args.replay:
