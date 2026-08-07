@@ -101,3 +101,6 @@
 [2026-08-07 05:47:49] === PAPER live SHIB/USD 4h | equity $9,794.80 | k1.5 activate2.0R risk2% ===
 [2026-08-07 05:47:51] bar 2026-08-07 00:00:00  close 0.000005  side 0  equity 9794.80
 [2026-08-07 07:37:34] === PAPER live SHIB/USD 4h | equity $9,794.80 | k1.5 activate2.0R risk2% ===
+[2026-08-07 09:13:09] === PAPER live SHIB/USD 4h | equity $9,794.80 | k1.5 activate2.0R risk2% ===
+[2026-08-07 09:13:11] bar 2026-08-07 04:00:00  close 0.000005  side 0  equity 9794.80
+[2026-08-07 09:13:11]   ENTER SHORT @ 0.000005  qty 1613181149.13  stop 0.000005  (risk 2%)
