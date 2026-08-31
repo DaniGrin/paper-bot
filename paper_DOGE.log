@@ -638,3 +638,5 @@
 [2026-08-31 13:33:40] bar 2026-08-31 08:00:00  close 0.082632  side 0  equity 11104.83
 [2026-08-31 19:58:10] === PAPER live DOGE/USD 4h | equity $11,104.83 | k1.5 activate2.0R risk2% ===
 [2026-08-31 19:58:13] bar 2026-08-31 12:00:00  close 0.082788  side 0  equity 11104.83
+[2026-08-31 23:45:59] === PAPER live DOGE/USD 4h | equity $11,104.83 | k1.5 activate2.0R risk2% ===
+[2026-08-31 23:46:01] bar 2026-08-31 16:00:00  close 0.083282  side 0  equity 11104.83
