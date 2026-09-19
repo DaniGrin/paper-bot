@@ -840,3 +840,5 @@
 [2026-09-18 18:20:26]   ENTER LONG @ 2582.730000  qty 3.58  stop 2518.620091  (risk 2%)
 [2026-09-18 21:36:17] === PAPER live ETH/USD 4h | equity $11,485.52 | k1.5 activate2.0R risk2% ===
 [2026-09-18 21:36:20] bar 2026-09-18 16:00:00  close 2636.730000  side 1  equity 11485.52
+[2026-09-19 00:12:15] === PAPER live ETH/USD 4h | equity $11,485.52 | k1.5 activate2.0R risk2% ===
+[2026-09-19 00:12:17] bar 2026-09-18 20:00:00  close 2611.320000  side 1  equity 11485.52
