@@ -955,3 +955,5 @@
 [2026-09-29 20:41:34] === PAPER live ETH/USD 4h | equity $11,705.06 | k1.5 activate2.0R risk2% ===
 [2026-09-29 20:41:36] bar 2026-09-29 16:00:00  close 2688.820000  side 1  equity 11705.06
 [2026-09-29 20:41:36]   EXIT LONG @ 2677.680265  PnL -247.19  equity 11457.86  (WR 3/7)
+[2026-09-30 00:20:21] === PAPER live ETH/USD 4h | equity $11,457.86 | k1.5 activate2.0R risk2% ===
+[2026-09-30 00:20:24] bar 2026-09-29 20:00:00  close 2676.700000  side 0  equity 11457.86
