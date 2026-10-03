@@ -981,3 +981,5 @@
 [2026-10-02 18:21:28] bar 2026-10-02 12:00:00  close 2696.940000  side 0  equity 11457.86
 [2026-10-02 22:56:13] === PAPER live ETH/USD 4h | equity $11,457.86 | k1.5 activate2.0R risk2% ===
 [2026-10-02 22:56:15] bar 2026-10-02 16:00:00  close 2667.790000  side 0  equity 11457.86
+[2026-10-03 01:52:38] === PAPER live ETH/USD 4h | equity $11,457.86 | k1.5 activate2.0R risk2% ===
+[2026-10-03 01:52:41] bar 2026-10-02 20:00:00  close 2668.100000  side 0  equity 11457.86
