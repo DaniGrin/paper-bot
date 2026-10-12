@@ -1065,3 +1065,6 @@
 [2026-10-11 21:49:56] bar 2026-10-11 16:00:00  close 0.000005  side -1  equity 11235.52
 [2026-10-12 01:13:30] === PAPER live SHIB/USD 4h | equity $11,235.52 | k1.5 activate2.0R risk2% ===
 [2026-10-12 01:13:33] bar 2026-10-11 20:00:00  close 0.000005  side -1  equity 11235.52
+[2026-10-12 09:04:07] === PAPER live SHIB/USD 4h | equity $11,235.52 | k1.5 activate2.0R risk2% ===
+[2026-10-12 09:04:09] bar 2026-10-12 04:00:00  close 0.000006  side -1  equity 11235.52
+[2026-10-12 09:04:09]   EXIT SHORT @ 0.000006  PnL -8.11  equity 11227.41  (WR 2/11)
