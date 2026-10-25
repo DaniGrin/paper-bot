@@ -1204,3 +1204,5 @@
 [2026-10-25 05:59:55]   EXIT SHORT @ 0.077784  PnL -215.44  equity 10149.60  (WR 3/13)
 [2026-10-25 11:14:58] === PAPER live DOGE/USD 4h | equity $10,149.60 | k1.5 activate2.0R risk2% ===
 [2026-10-25 11:15:00] bar 2026-10-25 04:00:00  close 0.076831  side 0  equity 10149.60
+[2026-10-25 16:02:48] === PAPER live DOGE/USD 4h | equity $10,149.60 | k1.5 activate2.0R risk2% ===
+[2026-10-25 16:02:51] bar 2026-10-25 12:00:00  close 0.077145  side 0  equity 10149.60
