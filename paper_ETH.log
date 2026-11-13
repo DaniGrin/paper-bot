@@ -1352,3 +1352,5 @@
 [2026-11-13 07:49:22] === PAPER live ETH/USD 4h | equity $10,283.58 | k1.5 activate2.0R risk2% ===
 [2026-11-13 07:49:24] bar 2026-11-13 00:00:00  close 1932.620000  side 0  equity 10283.58
 [2026-11-13 07:49:24]   ENTER SHORT @ 1932.620000  qty 3.56  stop 1990.413325  (risk 2%)
+[2026-11-13 16:09:48] === PAPER live ETH/USD 4h | equity $10,283.58 | k1.5 activate2.0R risk2% ===
+[2026-11-13 16:09:50] bar 2026-11-13 12:00:00  close 1934.040000  side -1  equity 10283.58
