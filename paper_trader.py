@@ -77,6 +77,14 @@ def indicators(df, don=20):
     return (ema(df.close,200).values, atr(df,14).values,
             df.high.rolling(don).max().shift(1).values, df.low.rolling(don).min().shift(1).values)
 
+def pending_bars(df, tf_ms, now_ms, last_ts):
+    """Positions of the CLOSED bars not processed yet, oldest first. A fresh account takes only the
+    newest closed bar, so it never trades history."""
+    closed = np.flatnonzero((df.ts.values + tf_ms) <= now_ms)
+    if last_ts == 0:
+        return closed[-1:]
+    return closed[df.ts.values[closed] > last_ts]
+
 def main():
     import ccxt
     p = argparse.ArgumentParser(description="Paper trader (no keys) — step-trail bot on live prices")
@@ -116,20 +124,26 @@ def main():
                  f"trades {s['trades']}  WR {100*s['wins']/max(s['trades'],1):.0f}% ===")
         return
 
-    # ---- LIVE PAPER: loop, act on each newly closed bar ----
+    # ---- LIVE PAPER: loop, act on EVERY closed bar since the last one processed ----
+    # The scheduler can be hours late, so several 4h bars may have closed since the previous run.
     s = load_state(sym, args.capital)
     log(sym, f"=== PAPER live {symbol} {args.tf} | equity ${s['equity']:,.2f} | "
              f"k{args.k} activate{args.activate}R risk{args.risk:.0%} ===")
     while True:
         try:
             df = fetch_df(ex, symbol, args.tf)
-            closed = df.iloc[-2]
-            if int(closed.ts) > s["last_bar_ts"]:
-                e,a,up,dn = indicators(df); j = len(df)-2
-                log(sym, f"bar {pd.to_datetime(int(closed.ts),unit='ms')}  close {closed.close:.6f}  "
-                         f"side {s['side']}  equity {s['equity']:.2f}")
-                handle_bar(tuple(closed[["ts","open","high","low","close"]]), e[j],a[j],up[j],dn[j], s, args, sym)
-                save_state(sym, s)
+            tf_ms = ex.parse_timeframe(args.tf) * 1000
+            todo = pending_bars(df, tf_ms, ex.milliseconds(), s["last_bar_ts"])
+            if len(todo):
+                if s["last_bar_ts"] and df.ts.iloc[0] > s["last_bar_ts"] + tf_ms:
+                    log(sym, "WARNING: gap is longer than the downloaded history - some bars cannot be recovered")
+                e,a,up,dn = indicators(df)
+                for j in todo:
+                    bar = df.iloc[j]
+                    log(sym, f"bar {pd.to_datetime(int(bar.ts),unit='ms')}  close {bar.close:.6f}  "
+                             f"side {s['side']}  equity {s['equity']:.2f}")
+                    handle_bar(tuple(bar[["ts","open","high","low","close"]]), e[j],a[j],up[j],dn[j], s, args, sym)
+                    save_state(sym, s)
         except Exception:
             log(sym, "ERROR:\n"+traceback.format_exc())
         if args.once: break
